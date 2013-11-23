@@ -1,0 +1,17 @@
+{
+  "name": "weather",
+  "version": "0.0.0",
+  "description": "app to show your weather based on your location",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "wunderground"
+  ],
+  "author": "Bulkan Evcimen",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "request": "~2.27.0"
+  }
+}
