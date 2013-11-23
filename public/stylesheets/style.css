@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Inika', serif, "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
@@ -9,7 +9,9 @@ a {
 
 #results {
     display: none;
-    float: left;
+    display: block;
+    position: absolute;
+    left: 310px;
 }
 
 .location_item {
@@ -21,6 +23,14 @@ a {
 }
 
 #controls {
+    margin-right: 35px;
+}
+
+#controls label {
+    font-weight: bold;
+}
+
+#current_temp {
+    font-size: 20px;
     float: left;
-    margin-right: 20px;
 }
