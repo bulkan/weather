@@ -28,7 +28,7 @@ describe('Weather', function(){
     it('can get the condition', function(done){
       var w = new Weather(apiKey);
 
-      w.condition('Australia', 'Melbourne', function(err, conditionData){
+      w.condition('/q/zmw:00000.1.94868', function(err, conditionData){
         if (err) return done(err);
         request.get.should.have.been.calledOnce;
         conditionData.should.have.property('current_observation');
@@ -49,7 +49,7 @@ describe('Weather', function(){
       sinon.stub(request, 'get').yields(null, null, JSON.stringify(''));
       request.get.should.have.been.calledOnce;
 
-      w.condition('Australia', 'Melbourne', function(err, conditionData){
+      w.condition('/q/zmw:00000.1.94868', function(err, conditionData){
         err.should.not.be.null;
         request.get.restore();
         done();

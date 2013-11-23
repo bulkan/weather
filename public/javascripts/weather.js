@@ -1,26 +1,28 @@
 console.log(appKey);
 
 function autocomplete(json){
-  
   console.log(json.RESULTS);
 
-  var results = $('#results');
+  var results = $('#results').hide().html('');
 
   $.each(json.RESULTS, function(i, location) {
-      results.append('<p class="location_item">' + location.name + '</p>');
+    var p = $('<p>');
+    p.attr('data-link', location.l).html(location.name).attr('class', 'location_item');
+    results.append(p);
   });
 
-  results.slideDown();
+  results.slideDown('fast');
 
   $('.location_item').on('click', function(e){
-    var location = $(e.target).text();
+    var location = $(e.target);
     var results = $('#results');
 
     results.slideUp().html('');
 
-    $('#location').val(location);
+    $('#location').val(location.text());
 
-    $.ajax('/condition').done(function(data){
+
+    $.ajax('/condition?link=' + location.attr('data-link') ).done(function(data){
       var weather = $('#weather');
       var co = data.current_observation;
       $('#current_temp').html(co.temperature_string);

@@ -4,7 +4,10 @@ var Weather  = require('../lib/weather')
 
 
 module.exports.index = function(req, res){
-  w.condition('Australia', 'Melbourne', function(err, conditionData){
+  var link = req.query.link;
+  if (!link) return res.send(404);
+
+  w.condition(link, function(err, conditionData){
     if (err) {
       console.error(err);
       return res.send(500, err);
