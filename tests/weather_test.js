@@ -56,6 +56,8 @@ describe('Weather', function(){
       });
 
     });
+
+    it('when request response is http 500');
   });
 
 });
