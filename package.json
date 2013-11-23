@@ -12,8 +12,9 @@
   "author": "Bulkan Evcimen",
   "license": "MIT",
   "dependencies": {
-    "request": "~2.27.0"
-  }, 
+    "request": "~2.27.0",
+    "express": "~3.4.4"
+  },
   "devDependencies": {
     "chai": "~1.8.1",
     "sinon": "~1.7.3",
