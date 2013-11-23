@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p(id="controls")
+    label Location
+    input(type='text', id='location')
+    ul(id="results")
+
+  div(id="weather")
+    div(id="current_temp")
