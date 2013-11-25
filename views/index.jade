@@ -2,9 +2,10 @@ extends layout
 
 block content
   p(id="controls")
-    label Location
+    label Location: 
     input(type='text', id='location')
     ul(id="results")
 
+  img(id='loader', src='/images/loader.gif')
   div(id="weather")
     div(id="current_temp")

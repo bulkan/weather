@@ -1,9 +1,10 @@
-console.log(appKey);
-
+/**
+ * JSONP callback function for Wunderground AutoComplete
+ */
 function autocomplete(json){
-  console.log(json.RESULTS);
-
-  var results = $('#results').hide().html('');
+  $('#loader').hide();
+  var results = $('#results');
+  results.html('');
 
   $.each(json.RESULTS, function(i, location) {
     var p = $('<p>');
@@ -13,10 +14,12 @@ function autocomplete(json){
 
   results.slideDown('fast');
 
+  // bind to click events on the <p> elements for location
   $('.location_item').on('click', function(e){
     var location = $(e.target);
     var results = $('#results');
 
+    $('#loader').show();
     results.slideUp().html('');
 
     // read the location from the input box
@@ -33,8 +36,10 @@ function autocomplete(json){
       // show the current weather string
       current_temp.html(co.temperature_string);
       $('<img>').attr('src', co.icon_url).appendTo(weather);
+      $('#loader').hide();
       weather.fadeIn();
     });
+
   });
 
 };
@@ -49,7 +54,11 @@ $(document).ready(function(){
    $('#location').bind('keyup', function(e) {
     if (timer) clearTimeout(timer);
 
+    $('#loader').show();
+
     timer = setTimeout(function(){
+      var results = $('#results').slideUp().html('');
+
       var query = e.target.value;
       $.ajax({
         url: url + query + '&cb=autocomplete', 
